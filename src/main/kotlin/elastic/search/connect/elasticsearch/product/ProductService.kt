@@ -13,4 +13,13 @@ class ProductService(@Autowired private val productRepository: ProductRepository
 
     fun deleteProduct(id: String) = productRepository.deleteById(id)
 
+    fun updateProduct(id: String, updatedProduct: Product): Product {
+        val product = productRepository.findById(id).orElse(null)
+            ?: throw RuntimeException("Product not found with id: $id")
+
+        product.name = updatedProduct.name
+        product.price = updatedProduct.price
+
+        return productRepository.save(product)
+    }
 }

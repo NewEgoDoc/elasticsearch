@@ -6,6 +6,6 @@ import org.springframework.data.elasticsearch.annotations.Document
 data class Product(
     @Id
     val id: String? = null,
-    val name: String,
-    val price: Double
+    var name: String,
+    var price: Double
 )

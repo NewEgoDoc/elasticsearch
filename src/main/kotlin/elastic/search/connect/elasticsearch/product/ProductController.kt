@@ -18,4 +18,8 @@ class ProductController(@Autowired private val productService: ProductService) {
     @DeleteMapping("/{id}")
     fun deleteProduct(@PathVariable id: String) = productService.deleteProduct(id)
 
+    @PutMapping("/{id}")
+    fun updateProduct(@PathVariable id: String, @RequestBody updatedProduct: Product): Product {
+        return productService.updateProduct(id, updatedProduct)
+    }
 }
